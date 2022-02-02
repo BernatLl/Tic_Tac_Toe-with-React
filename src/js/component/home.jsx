@@ -74,7 +74,7 @@ const Home = () => {
 		let i = 0;
 		let ctrl = true;
 
-		while (ctrl && j < table.length) {
+		while (ctrl && i < table.length) {
 			let j = 1;
 			let ctrl2 = true;
 			while (ctrl2 && j < table[i].length) {
