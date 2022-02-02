@@ -1,0 +1,21 @@
+body {
+    background-color: black;
+    margin: 0;
+}
+.container {
+    width: 480px; 
+    height: 480px;
+    margin-top: 10px;
+    
+}
+
+.item {
+    width: 150px;
+    height: 150px;
+    border: 1px white solid;
+    margin: 10px;
+    background-color: darksalmon;
+    font-size: 120px;
+    text-align: center;
+   
+}
