@@ -2,12 +2,7 @@ body {
     background-color: black;
     margin: 0;
 }
-.container {
-    width: 480px; 
-    height: 480px;
-    margin-top: 10px;
-    
-}
+
 
 .item {
     width: 150px;
