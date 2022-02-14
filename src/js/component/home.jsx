@@ -10,6 +10,9 @@ const Home = () => {
 	]);
 	const [turn, setTurn] = useState("x");
 
+	const [isWinner, setIsWinner] = useState(false);
+	const [recarga, setRecarga] = useState("Juego en curso");
+
 	const CheckColumn = () => {
 		let j = 0;
 		let ctrl = true;
@@ -62,7 +65,7 @@ const Home = () => {
 				table[i][j] != table[i - 1][j + 1] ||
 				typeof table[i][j] === "undefined"
 			) {
-				crtl = false;
+				ctrl = false;
 			} else {
 				i += 1;
 				j -= 1;
@@ -94,6 +97,28 @@ const Home = () => {
 		return !ctrl;
 	};
 
+	const ChangeTurn = () => setTurn(turn === "x" ? "o" : "x");
+
+	useEffect(() => {
+		ChangeTurn();
+		CheckWinner();
+	}, [table]);
+
+	const SetValue = (i, j) => {
+		if (!isWinner) {
+			if (typeof table[i][j] === "undefined") {
+				const tmp = table;
+				tmp[i][j] = turn;
+				setTable([...table]);
+			} else {
+				alert("Hey esta posicion ya estaba ocupada");
+			}
+		} else {
+			setIsWinner(true);
+			location.reload();
+		}
+	};
+
 	const CheckWinner = () => {
 		if (
 			CheckRows() ||
@@ -102,38 +127,30 @@ const Home = () => {
 			CheckSecondDiagonal()
 		) {
 			alert("Hay un ganador");
-		}
-	};
-
-	const ChangeTurn = () => setTurn(turn === "x" ? "o" : "x");
-
-	const SetValue = (i, j) => {
-		if (typeof table[i][j] === "undefined") {
-			const tmp = table;
-			tmp[i][j] = turn;
-			setTable(table);
-			ChangeTurn();
-			CheckWinner();
-		} else {
-			alert("Hey esta posicion ya estaba ocupada");
+			setIsWinner(true);
+			setRecarga("Haz Click para recargar el juego");
 		}
 	};
 
 	return (
 		<>
-			<table>
-				<tbody>
-					{table.map((row, i) => (
-						<tr key={i}>
-							{row.map((column, j) => (
-								<td onClick={() => SetValue(i, j)} key={j}>
-									<div className="item">{column}</div>
-								</td>
-							))}
-						</tr>
-					))}
-				</tbody>
-			</table>
+			{" "}
+			<div className="container">
+				<h1 className="winner">{recarga}</h1>
+				<table>
+					<tbody>
+						{table.map((row, i) => (
+							<tr key={i}>
+								{row.map((column, j) => (
+									<td onClick={() => SetValue(i, j)} key={j}>
+										<div className="item">{column}</div>
+									</td>
+								))}
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
 		</>
 	);
 };

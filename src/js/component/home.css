@@ -3,10 +3,11 @@ body {
     margin: 0;
 }
 table {
-    width: 450px;
-    height: 450px;
+    width: 480px;
+    height: 480px;
     margin: auto;
     margin-top: 30px;
+    border-collapse: separate;
 }
 
 td {
@@ -16,11 +17,16 @@ td {
     background-color: darksalmon;
     font-size: 80px;
     padding:0;
-
+    box-shadow: 10px 10px 10px 10px;
+    margin: 10px !important;
     
 }
 .item {
     text-align: center;
-    
+   
     padding-bottom: 20px;
+}
+.winner {
+    color: white;
+    text-align: center;
 }
