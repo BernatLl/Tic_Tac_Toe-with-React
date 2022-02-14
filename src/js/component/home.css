@@ -2,15 +2,25 @@ body {
     background-color: black;
     margin: 0;
 }
+table {
+    width: 450px;
+    height: 450px;
+    margin: auto;
+    margin-top: 30px;
+}
 
-
-.item {
-    width: 150px;
-    height: 150px;
+td {
+    width: 33%;
+    height: 33%;
     border: 1px white solid;
-    margin: 10px;
     background-color: darksalmon;
-    font-size: 120px;
+    font-size: 80px;
+    padding:0;
+
+    
+}
+.item {
     text-align: center;
-   
+    
+    padding-bottom: 20px;
 }
